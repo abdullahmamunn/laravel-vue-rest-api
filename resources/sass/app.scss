@@ -1,13 +1,11 @@
-@import "./../../public/back-end/bower_components/bootstrap/dist/css/bootstrap.min.css";
-@import "./../../public/back-end/bower_components/font-awesome/css/font-awesome.min.css";
-@import "./../../public/back-end/bower_components/Ionicons/css/ionicons.min.css";
-@import "./../../public/back-end/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css";
-@import "./../../public/back-end/dist/css/AdminLTE.min.css";
-@import "./../../public/back-end/dist/css/skins/_all-skins.min.css";
 
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-@import "./../../public/back-end/bower_components/jquery/dist/jquery.min.js";
-@import "./../../public/back-end/bower_components/jquery-ui/jquery-ui.min.js";
-@import "./../../public/back-end/bower_components/bootstrap/dist/js/bootstrap.min.js";
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
 
 

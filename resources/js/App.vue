@@ -1,24 +1,14 @@
 <template>
   <main>
-<Header></Header>
-
-<Sidebar></Sidebar>
-
-  <div class="content-wrapper">
-     <router-view></router-view>
-  </div>
- <Footer></Footer>
+    <Header></Header>
+       <router-view></router-view>
   </main>
 </template>
 <script>
-import Header from './pages/Header';
-import Sidebar from './pages/Sidebar';
-import Footer from './pages/Footer';
+    import Header from './pages/Header.vue';
 export default {
   components: {
-    Header,
-    Sidebar,
-    Footer,
+       Header,
   },
 };
 </script>

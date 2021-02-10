@@ -1,7 +1,11 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import  Vue from 'vue'
+import  VueRouter from 'vue-router'
+
 import  MainContent  from './components/MainContent.vue'
-import  Category  from './components/Category.vue'
+import  AddNew  from './components/AddNew.vue'
+import  Edit  from './components/Edit.vue'
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 Vue.use(VueRouter)
  const routes = [
      {
@@ -10,10 +14,16 @@ Vue.use(VueRouter)
          component: MainContent
      },
      {
-        path: '/category',
-        name: 'Category',
-        component: Category
-    }
+         path: '/add',
+         name: 'addNew',
+         component: AddNew
+     },
+     {
+         path: '/edit/:id',
+         name: 'edit',
+         component: Edit
+     },
+
  ];
 
  const router = new VueRouter({
