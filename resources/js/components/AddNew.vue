@@ -7,13 +7,23 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Title</label>
                         <div class="col-sm-10">
-                            <input type="text" v-model="articles.title" class="form-control" placeholder="Enter a Title">
+                            <input v-model="title" type="text" name="title" placeholder="Enter a Title" class="form-control">
+                             
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Body</label>
                         <div class="col-sm-10">
-                            <input type="text" v-model="articles.body" class="form-control" id="inputPassword3" placeholder="Body">
+                          <input v-model="body" type="text" name="body" placeholder="Enter a Body" class="form-control">
+                           
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Image</label>
+                        <div class="col-sm-10">
+                            
+                            <img v-if="articalImage" :src="articalImage" alt="photo" width="200">
+                            <input type="file" v-on:change="handelFileObject">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -29,24 +39,48 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { Form, HasError, AlertError } from 'vform'
+
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
+
+
     export default {
        data(){
            return{
-               articles:{}
+               
+                     title : '',
+                     body : '',
+                     articalImage: ''
+      
            }
        },
         methods:{
-            addArticles() {
+            handelFileObject(e)
+            {
+                let image = e.target.files[0]
+                let reader = new FileReader
+                reader.readAsDataURL(image);
+                reader.onload = e =>{
+                    // console.log(e);
+                  this.articalImage = e.target.result
+               }
+              
+            },
+            
+          addArticles()
+          {
+   
+             this.axios.post('/api/articals',{title: this.title, body: this.body, image: this.articalImage}).then((result) => {
+                this.$router.push({name: 'MainContent'});
 
-                this.axios
-                    .post('http://localhost:8000/api/articals', this.articles)
-                    .then(response => (
-                        this.$router.push({name: 'MainContent'})
-                        // console.log(response.data)
-                    ))
-                    .catch(error => console.log(error))
-                    .finally(() => this.loading = false)
-            }
+             }).catch((err) => {
+                  console.log(err);
+             });
+            
+          },
+            
         }
     }
 </script>

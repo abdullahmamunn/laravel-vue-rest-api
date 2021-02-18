@@ -4,7 +4,7 @@ import  VueRouter from 'vue-router'
 import  MainContent  from './components/MainContent.vue'
 import  AddNew  from './components/AddNew.vue'
 import  Edit  from './components/Edit.vue'
-Vue.component('pagination', require('laravel-vue-pagination'));
+
 
 Vue.use(VueRouter)
  const routes = [
@@ -27,6 +27,7 @@ Vue.use(VueRouter)
  ];
 
  const router = new VueRouter({
-     routes: routes
+     routes: routes,
+     mode: 'history',
  });
  export default router;

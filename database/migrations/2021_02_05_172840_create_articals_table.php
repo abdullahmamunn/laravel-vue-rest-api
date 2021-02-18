@@ -17,6 +17,7 @@ class CreateArticalsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('body');
+            $table->string('image')->default('def.png');
             $table->timestamps();
         });
     }
